@@ -1,0 +1,22 @@
+<form [formGroup]="newCustomer" (ngSubmit)="save()" class="example-container">
+
+    <mat-form-field hintLabel="Max 10 characters" appearance="outline">
+        <mat-label>Customer Phone Number</mat-label>
+        <input maxlength="10" matInput formControlName="CustomerPhone" placeholder="">
+        <mat-icon matSuffix>phone</mat-icon>
+        <mat-error *ngIf="newCustomer.invalid">{{showError()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Customer Name</mat-label>
+        <input matInput formControlName="CustomerName" placeholder="">
+        <mat-error *ngIf="newCustomer.invalid">{{showError1()}}</mat-error>
+    </mat-form-field>
+
+    <button matTooltip="Click to Refresh" mat-icon-button color="warn" (click)="refreshComponent()">
+        <mat-icon>refresh</mat-icon></button> 
+    
+    <div>
+        <button mat-flat-button color="primary" [disabled]="newCustomer.invalid">Save</button> 
+    </div>
+</form>

@@ -1,0 +1,35 @@
+<form [formGroup]="newEmployee" (ngSubmit)="save()" class="example-container">
+
+    <mat-form-field hintLabel="Max 10 characters" appearance="outline">
+        <mat-label>Employee Phone Number</mat-label>
+        <input maxlength="10" matInput formControlName="Phone" placeholder="">
+        <mat-icon matSuffix>phone</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Employee First Name</mat-label>
+        <input matInput formControlName="FirstName" placeholder="">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Employee Last Name</mat-label>
+        <input matInput formControlName="LastName" placeholder="">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="Email" placeholder="">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="Address" placeholder="">
+    </mat-form-field>
+
+    <button matTooltip="Click to Refresh" mat-icon-button color="warn" (click)="refreshComponent()">
+        <mat-icon>refresh</mat-icon></button> 
+    
+    <div>
+        <button mat-flat-button color="primary" [disabled]="newEmployee.invalid">Save</button> 
+    </div>
+</form>

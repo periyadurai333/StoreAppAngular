@@ -1,0 +1,24 @@
+<form [formGroup]="newProduct" (ngSubmit)="onSubmit()" class="example-container">
+
+    <mat-form-field>
+        <input matInput formControlName="ProductCode" placeholder="Product Code">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput formControlName="ProductName" placeholder="Product Name">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput formControlName="Price" placeholder="Price">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput formControlName="Count" placeholder="Count">
+    </mat-form-field>
+    <button mat-icon-button color="warn" (click)="refreshComponent()"><mat-icon>refresh</mat-icon></button>
+
+    <div>
+        <button mat-flat-button color="primary" [disabled]="newProduct.invalid">Save</button>  
+    </div>
+</form><br>
+

@@ -1,0 +1,21 @@
+<form [formGroup]="newOrder" (ngSubmit)="Add()" class="example-container">  
+    <mat-form-field>
+        <input matInput list="datalistOptions" placeholder="Product Name" formControlName="ProductName">
+                <datalist id="datalistOptions">
+                    <option *ngFor="let product of ProductList" [value]="product.productName">
+                </datalist>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput formControlName="ProductCount" placeholder="Quantity">
+    </mat-form-field>
+
+    <!-- <mat-form-field>
+        <input matInput formControlName="Price" placeholder="Price">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput formControlName="Total" placeholder="Total amount">
+    </mat-form-field> -->
+    <button mat-flat-button [disabled]="newOrder.invalid">OK</button>
+</form>

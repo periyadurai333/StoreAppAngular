@@ -1,0 +1,10 @@
+<mat-tab-group>
+  <mat-tab label="Active Product">
+    <app-table [ProductDetails]="ProductActiveDetails" [Columns]="displayedColumns"></app-table>
+  </mat-tab>
+
+  <mat-tab label="Discontinued Product">
+    <app-table [ProductDetails]="ProductDeActiveDetails" [Columns]="displayedColumnsDe"></app-table>
+  </mat-tab>
+ 
+</mat-tab-group>
