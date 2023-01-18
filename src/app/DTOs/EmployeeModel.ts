@@ -1,4 +1,4 @@
-export interface EmployeeDTO{
+export interface EmployeeModel{
     FirstName : string,
     LastName : string,
     Phone : number,

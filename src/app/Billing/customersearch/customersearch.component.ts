@@ -31,6 +31,7 @@ save(){
   this.CustomerName = this.Customerdetails.filter((phone:any)=>phone.customerPhone ==this.customer );
   if(this.CustomerName.length>0){
     this.CustomerName = this.CustomerName[0].customerName;
+    this.databaseService.customerId.next(this.CustomerName[0].customerId);
     console.log(this.CustomerName);
   }
   else{this.CustomerName = 'notfound';}

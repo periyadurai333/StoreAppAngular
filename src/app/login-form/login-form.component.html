@@ -1,17 +1,25 @@
 <form [formGroup]="LoginDetails" (ngSubmit)="Login()" class="example-container">
-    <mat-form-field appearance="outline">
-        <mat-label>User Name</mat-label>
-        <input matInput formControlName="UserName" placeholder="">
-        <!-- <mat-error *ngIf="LoginDetails.invalid">{{showError()}}</mat-error> -->
-    </mat-form-field> <br>
+  <mat-form-field appearance="outline">
+    <mat-label>User Name</mat-label>
+    <input matInput formControlName="UserName" placeholder="">
+    <!-- <mat-error *ngIf="LoginDetails.invalid">{{showError()}}</mat-error> -->
+  </mat-form-field> <br>
 
-    <mat-form-field appearance="outline">
-        <mat-label>Enter your password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" formControlName="Password">
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
-      </mat-form-field><br>
+  <mat-form-field appearance="outline">
+    <mat-label>Enter your password</mat-label>
+    <input matInput [type]="hide ? 'password' : 'text'" formControlName="Password">
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+      [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field><br>
 
-    <button mat-flat-button color="primary" [disabled]="LoginDetails.invalid">Login</button> 
+  <mat-radio-group formControlName="Role">
+    <mat-label>Select Your Role </mat-label>
+    <mat-radio-button value="User" style="margin-left: 16px;">User </mat-radio-button>
+    <mat-radio-button value="Admin" style="margin-left: 16px;">Admin </mat-radio-button>
+  </mat-radio-group>
+  <br><br>
+
+  <button mat-flat-button color="primary" [disabled]="LoginDetails.invalid" style="margin-left: 50px;">Login</button>
 </form>

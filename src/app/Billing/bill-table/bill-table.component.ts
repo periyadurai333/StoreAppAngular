@@ -20,4 +20,8 @@ export class BillTableComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  save(){
+    this.databaseservice.postBillDetails();
+  }
+
 }

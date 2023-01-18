@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DatabaseService } from './service/database.service';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'StoreAppAngular';
-  constructor(){
-    
+  hide: any;
+  constructor(private databaseService: DatabaseService){
+    this.databaseService.hide.subscribe((res: any) => { this.hide = res});
   }
+  
   ngOnInit(){
   }
 }

@@ -3,15 +3,18 @@
     <div class="navbar-header">
       <a class="navbar-brand">PK Market</a>
     </div>
-    <ul class="nav navbar-nav">
+    <ul *ngIf="hide" class="nav navbar-nav">
       <li class="nav-item active"><a routerLink="/bill">Bill</a></li>
       <li class="nav-item active"><a routerLink="/stock">Stock</a></li>
       <li class="nav-item active"><a routerLink="/newproduct">Add Product</a></li>
       <li class="nav-item active"><a routerLink="/newcustomer">Add Customer</a></li>
       <li class="nav-item active"><a routerLink="/newemployee">Add Employee</a></li>
     </ul>
-    <ul class="nav navbar-right">
-      <li><a routerLink="/login">Login <span class="glyphicon glyphicon-log-in"></span></a></li>
+    <ul *ngIf="!hide" class="nav navbar-right">
+      <li class="nav-item active"><a routerLink="/login">Login <span class="glyphicon glyphicon-log-in"></span></a></li>
+    </ul>
+    <ul *ngIf="hide" class="nav navbar-right">
+      <li class="nav-item active"><a routerLink="/logout">Logout <span class="glyphicon glyphicon-log-out"></span></a></li>
     </ul>
   </div>
 </nav>

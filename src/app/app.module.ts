@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 import { MatmoduleModule } from './matmodule/matmodule.module';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -23,6 +23,9 @@ import { BillTableComponent } from './Billing/bill-table/bill-table.component';
 import { BillFormComponent } from './Billing/bill-form/bill-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { NewEmployeeComponent } from './new-employee/new-employee.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { LogoutComponent } from './logout/logout.component';
+import { TokenInterceptor } from './interceptor/token.interceptor';
 
 
 @NgModule({
@@ -34,7 +37,7 @@ import { NewEmployeeComponent } from './new-employee/new-employee.component';
     TableComponent,    
     DialogContentComponent, 
     NewcustomerComponent, 
-    SnackbarComponent, CustomersearchComponent, BillTableComponent, BillFormComponent, LoginFormComponent, NewEmployeeComponent
+    SnackbarComponent, CustomersearchComponent, BillTableComponent, BillFormComponent, LoginFormComponent, NewEmployeeComponent, PageNotFoundComponent, LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,13 @@ import { NewEmployeeComponent } from './new-employee/new-employee.component';
     MatmoduleModule
   ],
   providers: [DatabaseService,
-    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 3000,horizontalPosition: 'right', verticalPosition: 'top'}}],
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  },
+    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 3000,horizontalPosition: 'right', verticalPosition: 'top'}},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

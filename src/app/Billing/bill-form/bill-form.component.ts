@@ -22,7 +22,6 @@ export class BillFormComponent implements OnInit {
     //Loading product details in this component
     this.databaseService.ProductActiveDetails.subscribe((res:any) => {
       this.ProductList = res;
-      console.log("Bill constructor");
     });
   }
 

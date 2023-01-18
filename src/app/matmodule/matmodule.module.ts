@@ -16,6 +16,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [],
@@ -35,7 +36,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatDialogModule,
     MatSnackBarModule,
     MatAutocompleteModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatRadioModule
   ],
   exports:[
     MatTableModule,
@@ -52,7 +54,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatDialogModule,
     MatSnackBarModule,
     MatAutocompleteModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatRadioModule
   ]
 })
 export class MatmoduleModule { }

@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
-import { CustomerDTO } from './CustomerDTO';
-import { EmployeeDTO } from './EmployeeModel';
-import { ProductDTO } from './ProductModel';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { CustomerModel } from '../DTOs/CustomerModel';
+import { EmployeeModel } from '../DTOs/EmployeeModel';
+import { LoginDetailsModel } from '../DTOs/LoginDetailsModel';
+import { ProductDTO } from '../DTOs/ProductModel';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class DatabaseService {
   readonly CustomerURL  = 'https://localhost:7172/api/Customers';
   readonly EmployeeURL  = 'https://localhost:7172/api/Employees';
   readonly LoginURL     = 'https://localhost:7172/api/Login';
+  readonly BillURL     = 'https://localhost:7172/api/Bills';
 
   public ProductActiveDetails:any   = new Subject<any>();
   public ProductDeActiveDetails:any = new Subject<any>();
@@ -21,22 +23,24 @@ export class DatabaseService {
 
   public Bill:any = new Subject<any>();
   public total:any = new Subject<any>();
+  public customerId = new Subject<number>();
+  public hide:any = new BehaviorSubject<boolean>(false);
 
   constructor(private httpclient : HttpClient) {  
     
    }
   
-   getProductActiveDetails(){
+  getProductActiveDetails(){
     this.httpclient.get(this.ProductURL+'/-1').subscribe(res => {
       this.ProductActiveDetails.next(res);
   });
   
-   }
-   getProductDeActiveDetails(){
+  }
+  getProductDeActiveDetails(){
     this.httpclient.get(this.ProductURL+'/-2').subscribe(res => {
       this.ProductDeActiveDetails.next(res);
     });
-   }
+  }
 
   postProductDetails(data:ProductDTO){
     return this.httpclient.post(this.ProductURL,data);
@@ -51,11 +55,25 @@ export class DatabaseService {
       this.CustomerDetails.next(res);});
   }
 
-  postCustomerDetails(data:CustomerDTO){
+  postCustomerDetails(data:CustomerModel){
     return this.httpclient.post(this.CustomerURL,data);
   }
 
-  postEmployeeDetails(employee : EmployeeDTO){
+  postEmployeeDetails(employee : EmployeeModel){
     return this.httpclient.post(this.EmployeeURL,employee);
+  }
+
+  LoginCheck(loginDetails : LoginDetailsModel){
+    console.log("JWT Hitted")
+    return this.httpclient.put(this.LoginURL,loginDetails);
+  }
+
+  postLoginDetails(loginDetails: LoginDetailsModel){
+    return this.httpclient.post(this.LoginURL,loginDetails);
+  }
+  postBillDetails(){
+    this.Bill.subscribe((res:any)=>{console.log(res)});
+    this.customerId.subscribe((res:any)=>{console.log(res)});
+    this.total.subscribe((res:any)=>{console.log(res)});
   }
 }
