@@ -26,6 +26,7 @@ import { NewEmployeeComponent } from './new-employee/new-employee.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LogoutComponent } from './logout/logout.component';
 import { TokenInterceptor } from './interceptor/token.interceptor';
+import { MarketDetailsComponent } from './market-details/market-details.component';
 
 
 @NgModule({
@@ -37,7 +38,7 @@ import { TokenInterceptor } from './interceptor/token.interceptor';
     TableComponent,    
     DialogContentComponent, 
     NewcustomerComponent, 
-    SnackbarComponent, CustomersearchComponent, BillTableComponent, BillFormComponent, LoginFormComponent, NewEmployeeComponent, PageNotFoundComponent, LogoutComponent
+    SnackbarComponent, CustomersearchComponent, BillTableComponent, BillFormComponent, LoginFormComponent, NewEmployeeComponent, PageNotFoundComponent, LogoutComponent, MarketDetailsComponent
   ],
   imports: [
     BrowserModule,

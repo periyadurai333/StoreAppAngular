@@ -17,6 +17,7 @@ export class BillFormComponent implements OnInit {
   newOrder: FormGroup | any;
   Bill : any []=[];
   total:number = 0.00;         //Total amount to be shown in bill
+  duplicate:boolean=false;
 
   constructor(public databaseService: DatabaseService,private formBuilder: FormBuilder,private router: Router) { 
     //Loading product details in this component
@@ -40,8 +41,18 @@ export class BillFormComponent implements OnInit {
     this.newOrder.value.Price = this.ProductPrice[0].price;
     this.newOrder.value.Total = this.newOrder.value.ProductCount * this.ProductPrice[0].price;
     this.total = this.total + (this.newOrder.value.Total);
-
-    this.Bill.push(this.newOrder.value);
+     this.Bill.forEach(element => {
+       if(element.ProductName==this.newOrder.value.ProductName && element.Price==this.newOrder.value.Price){
+         element.ProductCount = Number(element.ProductCount)+Number(this.newOrder.value.ProductCount);
+         element.Total= Number(element.Total)+Number(this.newOrder.value.Total);
+         this.duplicate=true;
+         console.log(element);
+       }
+     });
+    console.log(this.Bill);
+    if(!this.duplicate){
+      this.Bill.push(this.newOrder.value);
+    }
     this.databaseService.Bill.next(this.Bill);
     this.databaseService.total.next(this.total);
     this.newOrder.reset();

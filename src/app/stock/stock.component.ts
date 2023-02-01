@@ -17,8 +17,7 @@ export class StockComponent implements OnInit {
 
   constructor(private databaseService: DatabaseService) {
     this.databaseService.ProductActiveDetails.subscribe((res: any) => { this.ProductActiveDetails = new MatTableDataSource(res);});
-    this.databaseService.ProductDeActiveDetails.subscribe((res: any) => { this.ProductDeActiveDetails = new MatTableDataSource(res);
-    console.log("Stock constructor")});
+    this.databaseService.ProductDeActiveDetails.subscribe((res: any) => { this.ProductDeActiveDetails = new MatTableDataSource(res);});
   }
 
   ngOnInit(): void {

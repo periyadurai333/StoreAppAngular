@@ -1,14 +1,17 @@
-<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+<nav class="navbar navbar-light" style="background-color: #1c1f19;">
   <div class="container">
     <div class="navbar-header">
-      <a class="navbar-brand">PK Market</a>
+      <a class="navbar-brand" routerLink="/marketdetails">PK Market</a>
     </div>
     <ul *ngIf="hide" class="nav navbar-nav">
       <li class="nav-item active"><a routerLink="/bill">Bill</a></li>
       <li class="nav-item active"><a routerLink="/stock">Stock</a></li>
-      <li class="nav-item active"><a routerLink="/newproduct">Add Product</a></li>
       <li class="nav-item active"><a routerLink="/newcustomer">Add Customer</a></li>
-      <li class="nav-item active"><a routerLink="/newemployee">Add Employee</a></li>
+      <li *ngIf="Role=='Admin'" class="nav-item active"><a routerLink="/newproduct">Add Product</a></li>
+      <li *ngIf="Role=='Admin'" class="nav-item active"><a routerLink="/newemployee">Add Employee</a></li>
+    </ul>
+    <ul *ngIf="UserName" class="nav navbar-right">
+      <li class="nav-item active"><a routerLink="/login">{{UserName}} <span class="glyphicon glyphicon-user"></span></a></li>
     </ul>
     <ul *ngIf="!hide" class="nav navbar-right">
       <li class="nav-item active"><a routerLink="/login">Login <span class="glyphicon glyphicon-log-in"></span></a></li>

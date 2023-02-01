@@ -23,6 +23,7 @@
     "@angular/router": "~13.2.0",
     "dynamic-grid": "^0.1.8",
     "jquery": "^3.6.1",
+    "jwt-decode": "^3.1.2",
     "md-content": "^1.0.8",
     "ng2-search-filter": "^0.5.1",
     "ngx-toastr": "^16.0.1",

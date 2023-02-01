@@ -1,3 +1,11 @@
+<div *ngIf="Customer == 'notfound'">
+  <h3>Customer Name not found please add</h3>
+  <button routerLink="/newcustomer">Add</button>
+</div>
+<div *ngIf="Customer != 'notfound'">
+  <h3>Customer Name : {{Customer}}</h3>
+</div>
+
 <div><table mat-table matSort [dataSource]="Datasource" class="table-container">
     <!-- Product Name Column -->
     <ng-container matColumnDef="productname">

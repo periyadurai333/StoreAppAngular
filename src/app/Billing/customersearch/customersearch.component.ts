@@ -12,6 +12,7 @@ export class CustomersearchComponent implements OnInit {
     //Loading Customer details in this component
     this.databaseService.CustomerDetails.subscribe((res:any)=>{
       this.Customerdetails = res;
+      //console.log(this.Customerdetails)
     });
    }
 
@@ -23,18 +24,22 @@ export class CustomersearchComponent implements OnInit {
   Customerdetails:any;  //Customer details list from service
   customer:any;         //Customer phone number from user
   CustomerName:any;     //Customer name will show to user
+  CustomerPhone:number=0;
 
   //Filter the phone number by user provided number and giving the customer name accordingly
 //Else will notify add new customer
-save(){
-  console.log(this.customer)
-  this.CustomerName = this.Customerdetails.filter((phone:any)=>phone.customerPhone ==this.customer );
-  if(this.CustomerName.length>0){
-    this.CustomerName = this.CustomerName[0].customerName;
-    this.databaseService.customerId.next(this.CustomerName[0].customerId);
-    console.log(this.CustomerName);
+Check(){
+  this.customer = this.Customerdetails.filter((phone:any)=>phone.customerPhone ==this.CustomerPhone );
+  if(this.customer.length>0){
+    this.customer = this.customer[0];
+    this.databaseService.customerId.next(this.customer);
+    this.CustomerName=this.customer.customerName;
+    
   }
-  else{this.CustomerName = 'notfound';}
+  else{
+    this.databaseService.customerId.next('notfound');
+    //this.CustomerName = 'notfound';
+  }
 }
 
 }

@@ -1,15 +1,15 @@
 <div>
-    <input maxlength="10" list="datalistOptionscustomer" placeholder="Type to search..." [(ngModel)]="customer">
+    <input maxlength="10" list="datalistOptionscustomer" placeholder="Type to search..." [(ngModel)]="CustomerPhone">
     <datalist id="datalistOptionscustomer">
         <option *ngFor="let customer of Customerdetails" [value]="customer.customerPhone">
     </datalist>
 
-    <button (click)="save()">Check</button>
-    <div *ngIf="CustomerName == 'notfound'">
+    <button (click)="Check()">Check</button>
+    <!-- <div *ngIf="CustomerName == 'notfound'">
         <h3>Customer Name not found please add</h3>
         <button routerLink="/newcustomer">Add</button>
     </div>
     <div *ngIf="CustomerName != 'notfound'">
         <h3>{{CustomerName}}</h3>
-    </div>
+    </div> -->
 </div> 
